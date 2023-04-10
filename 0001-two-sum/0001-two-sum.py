@@ -7,5 +7,5 @@ class Solution:
                 return [hash_table[target- nums[i]],i]
             else:
                 hash_table[nums[i]]=i
-        return None
+        
             
