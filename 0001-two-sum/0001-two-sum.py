@@ -5,7 +5,7 @@ class Solution:
         for i in range(len(nums)):
             if (target- nums[i]) in hash_table:
                 return [hash_table[target- nums[i]],i]
-            else:
-                hash_table[nums[i]]=i
+            
+            hash_table[nums[i]]=i
         
             
