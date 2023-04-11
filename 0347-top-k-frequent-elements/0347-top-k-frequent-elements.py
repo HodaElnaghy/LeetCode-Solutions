@@ -1,15 +1,18 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        hash_table = {}
-        array=[]
-        for num in nums :
-            hash_table[num]= 1 + hash_table.get(num,0)
-            
-        sorted_hash = dict(sorted(hash_table.items(), key=lambda item: item[1], reverse=True))
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+        for n, c in count.items():
+            freq[c].append(n)
+
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
+
         
-        for i, key in enumerate(sorted_hash.keys()):
-            if i == k:
-                break
-            array.append(key)
-            
-        return array
